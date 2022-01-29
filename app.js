@@ -19,28 +19,48 @@ const game = {
   
   play: function() {
     this.secretNum = Math.floor(Math.random() * 
-      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
+      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum;
 
-      return this.secretNum
+      this.prevGuesses.push(this.getGuess());
+  
+  return this.prevGuess;
+      
+  },
+  
+  getGuess: function(){
+
+    let guess;
+
+    do {
+      guess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}`
+      ));
+    } while(
+      isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum
+    )
+return guess
+
   }
 
   
   
   
-} 
-
-
-const getGuess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}`));
-
-while(getGuess !== game.play()){
-  alert(`shit on my dick`)
 }
 
-if(getGuess === game.play()){
-  alert(
-    `Congrats! You guessed the number in`
-  )
-}
+
+
+
+
+
+
+// while(getGuess !== game.play()){
+//   alert(getGuess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}`)))
+// }
+
+// if(getGuess === game.play()){
+//   alert(
+//     `Congrats! You guessed the number in`
+//   )
+// }
 
 // if (getGuess.play() == secretNum) {
 //   alert("Wow! I'm a Scorpio too!");
