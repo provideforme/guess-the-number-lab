@@ -17,13 +17,15 @@ const game = {
   secretNum: null,
   prevGuesses: [],
   
-  play: function() {
+  play: function(){
     this.secretNum = Math.floor(Math.random() * 
-      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum;
+      (this.biggestNum - this.smallestNum + 1)) + this.smallestNum
 
-      this.prevGuesses.push(this.getGuess());
-  
-  return this.prevGuess;
+      do {this.prevGuesses.push(this.getGuess());
+      
+      this.render();
+
+    } while (this.prevGuesses[this.prevGuesses.length - 1] !== this.secretNum);
       
   },
   
@@ -32,53 +34,45 @@ const game = {
     let guess;
 
     do {
-      guess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}`
+      guess = parseInt(prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}`
       ));
-    } while(
+
+    } 
+    while(
       isNaN(guess) || guess < this.smallestNum || guess > this.biggestNum
     )
-return guess
+    return guess;
+  },
 
+  render: function(){
+    let message;
+
+  if(this.prevGuesses[this.prevGuesses.length - 1] === this.secretNum){
+    message = (`Congrats! You guessed the number`)}
+
+    else {
+    message = (`Your guess is too`)
+    }
+
+    alert(message)
   }
-
   
   
   
 }
 
+game.play()
 
 
 
 
 
 
-// while(getGuess !== game.play()){
-//   alert(getGuess = parseInt(prompt(`Enter a guess between ${game.smallestNum} and ${game.biggestNum}`)))
-// }
+// if(this.prevGuesses[this.prevGuesses.length - 1] === this.secretNum){
+//   message = (`Congrats! You guessed the number in ${this.prevGuesses.length} ${
+//     this.prevGuesses.length > 1 ? "guesses" : "guess"
+//   }`)}
 
-// if(getGuess === game.play()){
-//   alert(
-//     `Congrats! You guessed the number in`
-//   )
-// }
-
-// if (getGuess.play() == secretNum) {
-//   alert("Wow! I'm a Scorpio too!");
-
-
-
-
-
-
-
-
-// if(getGuess === this.secretNum){
-//   return 
-// }
-
-// console.log(game.play())
-
-// if(i =)
-
-
-// console.log()
+//   else {
+//   message = (`Your guess is too ${this.prevGuesses[this.prevGuesses.length - 1] > this.secretNum ? 'high' : 'low' }\n Previous guesses: ${this.prevGuesses.join(", ")}`)
+//   }
