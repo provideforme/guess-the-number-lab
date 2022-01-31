@@ -14,13 +14,13 @@ const game = {
         this.render();
   
       } while (this.prevGuesses[this.prevGuesses.length - 1] !== this.secretNum);
-
-      console.log(this.secretNum)
-  },
+        //this.prevGuesses[this.prevGuesses.length] returns the length of the array, but when you subtract 1 ie. this.prevGuesses[this.prevGuesses.length - 1] it will bring you to the last nuber of the array (if there are 4 numbers in the array the index of the last one would be three. length of the array - 1 = index of the last number)
+        console.log(this.secretNum)
+      },
   
   getGuess: function(){
-    let guess;
-
+      let guess;
+      //do{}while() looks like this
     do {
       guess = parseInt(prompt(`Enter a guess between ${this.smallestNum} and ${this.biggestNum}`
       ));
